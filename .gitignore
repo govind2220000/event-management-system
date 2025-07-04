@@ -1,0 +1,56 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+backend/.env
+frontend/.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Prisma generated files
+backend/prisma/dev.db
+backend/prisma/*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# VSCode settings
+.vscode/
+
+# Nodemon
+nodemon-debug.log
+
+# Ignore local database files
+*.db
+
+# Ignore Docker volumes (if mapped locally)
+postgres_data/
+
+# React build output
+frontend/build/
+
+# React testing
+frontend/coverage/
+
+# React environment files
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# React editor settings
+frontend/.eslintcache
+
+# Misc
+*.tgz
+.idea/
+*.sublime-workspace
+*.sublime-project

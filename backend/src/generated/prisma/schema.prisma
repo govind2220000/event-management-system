@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int                 @id @default(autoincrement())
+  name          String
+  email         String              @unique
+  passwordHash  String              @map("password_hash")
+  role          Role                @default(user)
+  createdAt     DateTime            @default(now()) @map("created_at")
+  events        Event[]             @relation("CreatedEvents")
+  registrations EventRegistration[]
+}
+
+model Location {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  city      String
+  state     String
+  country   String
+  createdAt DateTime @default(now()) @map("created_at")
+  events    Event[]
+}
+
+model Event {
+  id            Int                 @id @default(autoincrement())
+  title         String
+  description   String
+  date          DateTime
+  category      String
+  location      Location            @relation(fields: [locationId], references: [id])
+  locationId    Int
+  createdBy     User                @relation("CreatedEvents", fields: [createdById], references: [id])
+  createdById   Int
+  createdAt     DateTime            @default(now()) @map("created_at")
+  registrations EventRegistration[]
+}
+
+model EventRegistration {
+  id               Int                @id @default(autoincrement())
+  user             User               @relation(fields: [userId], references: [id])
+  userId           Int
+  event            Event              @relation(fields: [eventId], references: [id])
+  eventId          Int
+  registrationDate DateTime           @default(now()) @map("registration_date")
+  status           RegistrationStatus @default(registered)
+}
+
+enum Role {
+  admin
+  user
+}
+
+enum RegistrationStatus {
+  registered
+  cancelled
+}
