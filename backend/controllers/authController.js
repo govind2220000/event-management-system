@@ -50,7 +50,7 @@ async function login(req,res,next){
             error.status = ERR.INVALID_CREDENTIALS.status;
             throw error;
         }
-        const token = generateToken(user)
+        const token = generateToken(validUser)
         res.status(200).json({message:"Login successful",token,user:{id:validUser.id,name:validUser.name,email:validUser.email,role:validUser.role}});
     } catch (error) {
         next(error);

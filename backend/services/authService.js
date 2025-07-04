@@ -6,8 +6,8 @@ const generateToken = (user)=>{
         email: user.email,
         role:user.role
     }
-
-    return jwt.sign(payloadForJWT,process.env.JWT_SECRET,{expiresIn:'1h'});
+    const token = jwt.sign(payloadForJWT,process.env.JWT_SECRET,{expiresIn:'1h'});
+    return token
 }
 
 module.exports = {
