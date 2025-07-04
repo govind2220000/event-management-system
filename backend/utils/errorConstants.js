@@ -26,6 +26,26 @@ module.exports = {
   INVALID_REQUEST: {
     status: 400,
     message: 'Invalid request'
+  },
+  INVALID_TOKEN: {
+    status: 401,
+    message: 'Invalid or expired token'
+  },
+  EVENT_NOT_FOUND: {
+    status: 404,
+    message: 'Event not found'
+  },
+  LOCATION_NOT_FOUND: {
+    status: 404,
+    message: 'Location not found'
+  },
+  ALL_FIELDS_REQUIRED: {
+    status: 400,
+    message: 'All fields are required'
+  },
+  ALREADY_REGISTERED: {
+    status: 400,
+    message: "Already registered for this event"
   }
-  // Add more as needed
+  
 }; 
