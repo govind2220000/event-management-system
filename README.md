@@ -4,6 +4,11 @@ A full-stack event management platform with a React frontend and Node.js/Express
 
 ---
 
+## Demo
+Watch the project demo: [Event Management System Demo](https://drive.google.com/file/d/1UrkKufb_ciVG4EieoM3VEJPGY-McJQDK/view?usp=sharing)
+
+---
+
 ## Prerequisites
 - [Docker](https://www.docker.com/) & Docker Compose
 - Node.js (for local development, optional)
